@@ -1,0 +1,52 @@
+
+# Large data files
+*.parquet
+*.npy
+*.pkl
+*.sdf
+*.pdbqt
+*.xtc
+*.trr
+*.edr
+*.tpr
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Temporary files
+__pycache__/
+*.pyc
+
+# Molecular modeling / MD / ACPYPE outputs
+*.gro
+*.itp
+*.top
+*.mol2
+*.frcmod
+*.inpcrd
+*.lib
+*.prmtop
+*.mdp
+*.cif
+*.pdb
+*.pdbqt
+*.ac
+*.ac0
+*.inf
+*.sh
+*.out
+*.in
+
+# ACPYPE directories
+*.acpype/
+
+# Gromacs/system outputs
+data/md/
+data/docking/
+
+# OS / notebook temp
+.DS_Store
+Thumbs.db

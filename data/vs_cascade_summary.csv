@@ -1,0 +1,11 @@
+Stage,N,Note,Retained_%
+0. COCONUT total,695133,Full COCONUT Oct 2024,100.0
+1. Lipinski (lipinski_pass == True),477975,Pre-computed flag,68.7602
+2a. QSAR global (p >= 0.50),2072,All compounds,0.2981
+2b. QSAR African NP (p >= 0.30),173,African NPs — relaxed threshold,0.0249
+3. AD tiered threshold,748,Within-AD p>=0.50; outside-AD p>=0.60,0.1076
+4. NP-likeness (>= 0.0),387,np_likeness >= 0,0.0557
+5. Diversity (Tc < 0.85),302,Tanimoto < 0.85 greedy leader-picking,0.0434
+6a. African NP tier,159,"p >= 0.30, diverse, NP-like",0.0229
+6b. Global NP tier,143,"p >= 0.50, diverse, NP-like",0.0206
+Final docking set,302,Combined for AutoDock Vina (Notebook 04),0.0434

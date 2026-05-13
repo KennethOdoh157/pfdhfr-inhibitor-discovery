@@ -1,0 +1,11 @@
+best_classifier,Random Forest
+best_cls_ext_roc_auc,0.8605819051414906
+best_cls_ext_mcc,0.5831905991297752
+best_regressor,SVM
+best_reg_q2,0.4063641370053157
+best_reg_ext_rmse,1.276887728663433
+npass_recall_rate,0.125
+npass_n_recalled,5
+npass_n_valid,40
+h_star,12.288
+seed,42

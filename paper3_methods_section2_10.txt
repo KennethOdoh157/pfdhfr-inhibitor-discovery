@@ -1,0 +1,72 @@
+
+PAPER 3 METHODS — Section 2.10: Molecular Dynamics Simulations
+===============================================================
+
+2.10.1 Compound Selection for MD
+Three compounds were selected from the molecular docking results for
+molecular dynamics simulation: CNP0286261.0 (African NP, -11.86 kcal/mol),
+CNP0275186.1 (African NP, -11.13 kcal/mol), and CNP0539885.2 (Global NP,
+-10.03 kcal/mol, p_active=0.615). Pyrimethamine (-6.90 kcal/mol) was
+included as a reference control, as it is the co-crystallised ligand
+analogue in PDB structure 1J3I. Selection criteria were: docking score
+<= -9.0 kcal/mol, Tanimoto diversity (Tc < 0.40, ECFP4), and
+representation of both African NP and global NP chemical space.
+
+2.10.2 System Preparation
+Docked binding poses (mode 1, lowest energy) were extracted from AutoDock
+Vina output files using a custom Python parser. Heavy-atom coordinates
+were assigned from the docked pose; hydrogen atoms were placed using RDKit
+ETKDGv3 embedding followed by MMFF94 minimisation with all heavy atoms
+fixed, ensuring docked geometry was preserved.
+
+Ligand force field parameters were generated using ACPYPE v.2023.10.27
+with the GAFF2 atom type scheme and AM1-BCC partial charges computed via
+the sqm programme from AmberTools. All four ligands were assigned a net
+formal charge of zero. Parametrisation was performed on a Linux environment
+(Google Colab) due to platform constraints of AmberTools.
+
+The protein receptor (PfDHFR-TS K1 strain, PDB: 1J3I, chain A) was
+prepared using GROMACS pdb2gmx (version 2025.4) with the AMBER99SB-ILDN
+force field and TIP3P water model. Hydrogen atoms were added by pdb2gmx;
+the protein net charge was determined to be +9 e, requiring addition of
+9 Cl- counter-ions for system neutralisation. Protein-ligand complex
+coordinate files were assembled by merging protein and ligand GRO files,
+with ligand residues labelled LIG. Complex topology files were generated
+by incorporating GAFF2 ligand parameters into the AMBER99SB-ILDN protein
+topology.
+
+2.10.3 Simulation Protocol
+All MD simulations were performed using GROMACS 2025.4 on GPU-accelerated
+infrastructure (Google Colab, NVIDIA T4 GPU). Each protein-ligand complex
+was solvated in a dodecahedral TIP3P water box with a minimum solute-to-box
+edge distance of 1.0 nm. Na+ and Cl- ions were added to neutralise the
+system and achieve a physiological salt concentration of 0.15 M. Long-range
+electrostatics were treated with the Particle Mesh Ewald (PME) method
+(fourth-order interpolation, 0.16 nm Fourier spacing). Van der Waals and
+electrostatic real-space cutoffs were set to 1.0 nm. Covalent bonds
+involving hydrogen atoms were constrained using the LINCS algorithm
+(order 4).
+
+Each system underwent a four-stage simulation protocol:
+(i)   Steepest descent energy minimisation (maximum 50,000 steps, force
+      convergence < 1000 kJ mol-1 nm-1) to remove steric clashes;
+(ii)  NVT equilibration (100 ps, 310 K) with position restraints applied
+      to all protein and ligand heavy atoms (force constant 1000 kJ mol-1
+      nm-2), using the V-rescale thermostat (time constant 0.1 ps);
+(iii) NPT equilibration (100 ps, 310 K, 1 bar) with position restraints,
+      using the Parrinello-Rahman barostat (time constant 2.0 ps,
+      compressibility 4.5e-5 bar-1);
+(iv)  Production MD (50 ns, 310 K, 1 bar, unrestrained) with a 2 fs
+      timestep. Trajectory frames were saved every 10 ps (5,000 frames
+      per simulation).
+
+2.10.4 Analysis
+Trajectory analysis was performed using GROMACS built-in tools and MDAnalysis.
+The following metrics were computed for each simulation:
+- Backbone RMSD relative to the energy-minimised structure
+- Per-residue RMSF of binding site residues (within 5 A of ligand)
+- Radius of gyration of the protein
+- Protein-ligand hydrogen bond occupancy (distance <= 3.5 A, angle >= 120 deg)
+- MM-PBSA binding free energy estimation using gmx_MMPBSA
+All metrics were compared across the three hit compounds and pyrimethamine
+reference to assess relative binding stability.
