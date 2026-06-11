@@ -1,0 +1,136 @@
+
+2. Methods
+
+2.1 Compound Selection and Docking Pose Extraction
+
+Three natural product hits identified through the virtual screening and molecular
+docking pipeline (described in Papers 1 and 2) were selected for molecular dynamics
+simulation: CNP0286261 (African NP, AutoDock Vina score -11.86 kcal/mol),
+CNP0275186 (African NP, -11.13 kcal/mol), and CNP0539885 (Global NP,
+-10.03 kcal/mol). Pyrimethamine, the clinical antifolate whose resistance is
+modelled by the K1 strain quadruple mutant (N51I/C59R/S108N/I164L), was included
+as a positive reference control (docking score -6.90 kcal/mol). Best-mode docked
+poses were extracted from AutoDock Vina PDBQT output files and converted to PDB
+format using RDKit (version 2024.03.6) by stripping AutoDock-specific atom type
+columns and retaining only standard PDB coordinate fields.
+
+2.2 System Preparation
+
+The receptor structure (PDB: 1J3I, chain A, DHFR domain) was prepared using
+GROMACS 2023.3 pdb2gmx with the AMBER99SB-ILDN force field. Ligand parameters
+were generated using ACPYPE (version 2022.7.21) with the General AMBER Force
+Field version 2 (GAFF2) and AM1-BCC partial charges computed via AmberTools 23
+antechamber. Protein-ligand complexes were assembled by combining the processed
+receptor structure with the energy-minimised docked ligand coordinates.
+
+Each system was solvated in a rectangular TIP3P water box with 1.0 nm padding
+using gmx solvate, with explicit box dimensions of 4.526 x 6.387 x 4.703 nm
+derived from the complex structure. Sodium (Na+) and chloride (Cl-) ions were
+added to a physiological concentration of 0.15 M using gmx genion, with nine
+chloride ions added to neutralise the net +9e protein charge. Final system sizes
+were approximately 13,480-13,490 atoms per compound.
+
+2.3 Energy Minimisation and Equilibration
+
+All systems underwent steepest-descent energy minimisation until the maximum
+force converged below 1,000 kJ/mol/nm. Temperature equilibration (NVT) was
+performed for 100 ps at 310 K using the V-rescale thermostat with a coupling
+constant of 0.1 ps, with position restraints applied to protein heavy atoms.
+Pressure equilibration (NPT) was performed for 100 ps at 1 bar using the
+Berendsen barostat with a coupling constant of 2.0 ps and compressibility of
+4.5 x 10^-5 bar^-1. The Berendsen barostat was selected for NPT equilibration
+to ensure pressure stability; the Parrinello-Rahman barostat was applied during
+production MD to sample the correct NPT ensemble.
+
+Electrostatic interactions were computed using the Particle Mesh Ewald (PME)
+method with a real-space cutoff of 1.0 nm, a Fourier grid spacing of 0.16 nm,
+and fourth-order interpolation. Van der Waals interactions used a cutoff of
+1.0 nm with the Verlet neighbour list scheme. All bonds involving hydrogen atoms
+were constrained using the LINCS algorithm with fourth-order expansion and one
+LINCS iteration.
+
+2.4 Production Molecular Dynamics
+
+Production MD simulations were performed for 100 ns for each hit compound and
+50 ns for the pyrimethamine reference, using a 2 fs integration timestep.
+Simulations were executed using GROMACS 2023.3 compiled with CUDA acceleration
+on an NVIDIA T4 GPU (Google Colab Pro). Non-bonded interactions were computed
+on the GPU (-nb gpu) while PME electrostatics and coordinate updates were
+handled on the CPU (-pme cpu -update cpu) to maintain optimal memory usage.
+Trajectories were saved at 10 ps intervals, yielding 10,010 frames per 100 ns
+simulation and 5,005 frames for the pyrimethamine reference.
+
+2.5 Trajectory Post-Processing
+
+Raw trajectories from chunked production runs were concatenated using gmx trjcat
+and subjected to periodic boundary condition (PBC) correction using gmx trjconv
+with protein-centred wrapping (-center -pbc mol -ur compact) prior to all
+analyses. This procedure removes translational drift and re-images the protein
+and ligand into the primary unit cell, ensuring physically meaningful
+inter-atomic distances throughout the trajectory.
+
+2.6 Structural Stability Analysis
+
+All trajectory analyses were performed using MDAnalysis version 2.10.0 in
+Python 3.11. Backbone root mean square deviation (RMSD) was computed relative
+to the initial frame after alignment on backbone atoms (C, CA, N, O) spanning
+the full simulation length. The first 10 ns were treated as the equilibration
+period and excluded from convergence statistics; mean RMSD and standard
+deviation were reported for post-equilibration frames. Per-residue root mean
+square fluctuation (RMSF) was computed for C-alpha atoms over post-equilibration
+frames (10-100 ns), with particular attention to the four resistance mutation
+sites: N51I (residue 51), C59R (residue 59), S108N (residue 108), and
+I164L (residue 164). Radius of gyration was computed for all protein heavy atoms
+at 10-frame (0.1 ns) intervals as a measure of overall protein compactness.
+
+2.7 Hydrogen Bond Analysis
+
+Ligand-protein hydrogen bonds were identified using MDAnalysis
+HydrogenBondAnalysis with a donor-acceptor distance cutoff of 3.5 A and a
+donor-hydrogen-acceptor angle cutoff of 120 degrees. Analysis was performed
+over post-equilibration frames subsampled at 10-frame intervals (0.1 ns
+resolution) to reduce computational cost while retaining statistical
+representativeness. Hydrogen bond occupancy was defined as the percentage of
+analysed frames in which each unique donor-acceptor pair formed a hydrogen bond.
+Mean hydrogen bonds per frame was computed as the total number of hydrogen bond
+events divided by the number of analysed frames.
+
+2.8 Ligand-Protein Contact Frequency Analysis
+
+Ligand-protein residue contacts were computed over post-equilibration frames
+subsampled at 50-frame (0.5 ns) intervals. A contact was defined as any
+ligand heavy atom within 4.0 A of any atom of a given protein residue. Contact
+frequency was expressed as the percentage of analysed frames in which each
+residue maintained contact with the ligand. Only residues with contact frequency
+greater than 5% were retained for analysis and visualisation. Residues shared
+between each hit compound and the pyrimethamine reference were identified to
+assess binding pocket overlap.
+
+2.9 Representative Frame Extraction and Binding Site Visualisation
+
+A representative equilibrated binding conformation was extracted from each
+trajectory for structural comparison with the initial docked poses. The
+representative frame was defined as the frame within the final 20 ns of
+simulation whose backbone RMSD (relative to the initial frame) was closest to
+the mean RMSD of that period. This selection criterion ensures the chosen
+structure reflects the predominant equilibrated binding mode rather than a
+transient conformation.
+
+Binding site figures were generated using PyMOL open-source version 3.1.0.
+Two sets of figures were produced per compound: the initial docked pose
+(from AutoDock Vina, described in Paper 2) and the MD-equilibrated representative
+frame. In all figures, the protein is shown as a semi-transparent cartoon,
+binding site residues within 5 A of the ligand are shown as lines, key
+hydrogen bond partner residues are shown as sticks, and the four resistance
+mutation residues are highlighted in magenta with CA atom labels. Ligands are
+shown as sticks with oxygen and nitrogen atoms represented as spheres.
+All figures were ray-traced at 300 DPI with a white background.
+
+2.10 Software and Reproducibility
+
+All simulations and analyses were performed using open-source software:
+GROMACS 2023.3, MDAnalysis 2.10.0, RDKit 2024.03.6, ACPYPE 2022.7.21,
+AmberTools 23, PyMOL open-source 3.1.0, and pyedr. Input files, MDP parameters,
+topology files, representative frame PDB files, PyMOL visualisation scripts,
+and all analysis scripts are available at:
+https://github.com/KennethOdoh157/pfdhfr-inhibitor-discovery
