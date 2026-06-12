@@ -118,6 +118,9 @@ RMSD, RMSF, H-bonds, Rg, contact frequency analysis
 ---
 
 ## Repository Structure
+## Repository Structure
+
+```text
 pfdhfr-inhibitor-discovery/
 │
 ├── data/
@@ -156,27 +159,17 @@ pfdhfr-inhibitor-discovery/
 ├── figures/
 │   ├── binding_site/
 │   │   ├── md_frames/
-│   │   │   └── Representative MD frame PDB files
-│   │   │
 │   │   ├── movie_frames/
-│   │   │   └── Frames used to render simulation video
-│   │   │
 │   │   ├── CNP0275186_1_md_simulation.mp4
 │   │   ├── CNP0275186_1_md_simulation_white.mp4
 │   │   ├── fig21_*.png
-│   │   │   └── Docked pose binding site views (PyMOL)
-│   │   │
 │   │   └── fig22_*.png
-│   │       └── MD-equilibrated binding site views (PyMOL)
 │   │
 │   ├── fig1_roc_curves.png
-│   ├── fig2_*.png
 │   └── fig23_contact_frequency.png
 │
 ├── models/
 │   ├── best_classifier.pkl
-│   │   └── Primary QSAR model (Random Forest)
-│   │
 │   ├── ad_h_star.npy
 │   ├── ad_train_matrix.npy
 │   ├── shap_values_best_cls.npy
@@ -195,7 +188,7 @@ pfdhfr-inhibitor-discovery/
 ├── notebook_05b_md_colab_execution.ipynb
 ├── notebook_05c_md_local_analysis.ipynb
 │
-├── README.md
+└── README.md
 ---
 
 ## Notebooks
