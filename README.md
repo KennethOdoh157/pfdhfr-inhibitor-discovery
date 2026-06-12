@@ -67,53 +67,62 @@ Three questions motivated the study:
 3. Do the top docking hits maintain stable binding to the K1 active site under physiologically relevant simulation conditions, despite the resistance mutations?
 
 ---
-```text
 
 ## Pipeline Overview
+
+```text
 COCONUT Database (695,133 compounds)
-|
-v
+        │
+        ▼
 Stage 1: Lipinski Filter
-Rule of Five + rotatable bonds <= 10
-477,975 compounds pass
-|
-v
+Rule of Five + rotatable bonds ≤ 10
+→ 477,975 compounds pass
+
+        │
+        ▼
 Stage 2: QSAR Probability Filter
 Random Forest trained on ChEMBL DHFR bioactivity data
-African NPs: p(active) >= 0.30  |  Global NPs: p(active) >= 0.50
-2,245 compounds pass
-|
-v
+African NPs: p(active) ≥ 0.30  |  Global NPs: p(active) ≥ 0.50
+→ 2,245 compounds pass
+
+        │
+        ▼
 Stage 3: Applicability Domain Filter
 Williams plot leverage analysis
-Within-AD: p >= 0.50  |  Outside-AD: p >= 0.60
-1,847 compounds pass
-|
-v
+Within-AD: p ≥ 0.50  |  Outside-AD: p ≥ 0.60
+→ 1,847 compounds pass
+
+        │
+        ▼
 Stage 4: NP-Likeness Filter
-RDKit NP-likeness score >= 0.0
-1,204 compounds pass
-|
-v
+RDKit NP-likeness score ≥ 0.0
+→ 1,204 compounds pass
+
+        │
+        ▼
 Stage 5: Tanimoto Diversity Filter
-ECFP4, radius=2, Tc < 0.85  (greedy leader-picking)
-302 compounds advance to docking
-|
-v
+ECFP4, radius=2, Tc < 0.85 (greedy leader-picking)
+→ 302 compounds advance to docking
+
+        │
+        ▼
 AutoDock Vina 1.2.5 Molecular Docking
 Receptor: 1J3I chain A (K1 resistant PfDHFR)
-Grid centre: 28.0, 6.1, 59.8 A  |  Size: 20x20x20 A
-300 compounds docked  |  Best hit: -11.86 kcal/mol
-|
-v
+Grid centre: 28.0, 6.1, 59.8 Å | Size: 20×20×20 Å
+300 compounds docked
+Best hit: -11.86 kcal/mol
+
+        │
+        ▼
 MD Shortlist Selection
-Score <= -9.0 kcal/mol  +  Tc < 0.40 diversity filter
+Score ≤ -9.0 kcal/mol + Tc < 0.40 diversity filter
 3 hits + pyrimethamine reference
-|
-v
+
+        │
+        ▼
 GROMACS 2023.3 Molecular Dynamics
-AMBER99SB-ILDN + GAFF2/AM1-BCC  |  TIP3P  |  310 K  |  1 bar
-100 ns per hit compound  |  50 ns pyrimethamine reference
+AMBER99SB-ILDN + GAFF2/AM1-BCC | TIP3P | 310 K | 1 bar
+100 ns per hit compound | 50 ns pyrimethamine reference
 RMSD, RMSF, H-bonds, Rg, contact frequency analysis
 ```
 ---
