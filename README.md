@@ -67,6 +67,7 @@ Three questions motivated the study:
 3. Do the top docking hits maintain stable binding to the K1 active site under physiologically relevant simulation conditions, despite the resistance mutations?
 
 ---
+```text
 
 ## Pipeline Overview
 COCONUT Database (695,133 compounds)
@@ -114,7 +115,7 @@ GROMACS 2023.3 Molecular Dynamics
 AMBER99SB-ILDN + GAFF2/AM1-BCC  |  TIP3P  |  310 K  |  1 bar
 100 ns per hit compound  |  50 ns pyrimethamine reference
 RMSD, RMSF, H-bonds, Rg, contact frequency analysis
-
+```
 ---
 
 ## Repository Structure
