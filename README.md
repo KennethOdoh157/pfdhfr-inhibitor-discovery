@@ -119,60 +119,83 @@ RMSD, RMSF, H-bonds, Rg, contact frequency analysis
 
 ## Repository Structure
 pfdhfr-inhibitor-discovery/
-|
-+-- data/
-|   +-- docking/
-|   |   +-- receptor/
-|   |   |   +-- 1J3I_clean.pdb
-|   |   |   +-- 1J3I_original.pdb
-|   |   |   +-- 1J3I_receptor.pdbqt
-|   |   +-- ligands_pdbqt/               300 prepared ligand PDBQT files
-|   |   +-- results/                     300 AutoDock Vina output PDBQT files
-|   |   +-- logs/
-|   |   +-- docking_checkpoint.csv
-|   |   +-- ligand_prep_report.csv
-|   |   +-- vina_config.txt
-|   +-- md/                              MD system files and trajectories
-|   +-- chembl_dhfr_curated.parquet
-|   +-- chembl_dhfr_raw.csv
-|   +-- coconut_index.parquet
-|   +-- docking_results.csv
-|   +-- md_shortlist.csv
-|   +-- npass_master.parquet
-|   +-- screening_probs_all.npy
-|   +-- vs_african_np_hits.csv
-|   +-- vs_cascade_summary.csv
-|   +-- vs_docking_smiles.csv
-|
-+-- figures/
-|   +-- binding_site/
-|   |   +-- md_frames/                   Representative MD frame PDB files
-|   |   +-- movie_frames/                Frames used to render simulation video
-|   |   +-- CNP0275186_1_md_simulation.mp4
-|   |   +-- fig21_.png                  Docked pose binding site views (PyMOL)
-|   |   +-- fig22_.png                  MD-equilibrated binding site views (PyMOL)
-|   +-- fig1_roc_curves.png  through  fig23_contact_frequency.png
-|
-+-- models/
-|   +-- best_classifier.pkl              Primary QSAR model (Random Forest)
-|   +-- ad_h_star.npy                    Applicability domain leverage threshold
-|   +-- ad_train_matrix.npy              Training descriptor matrix for AD
-|   +-- shap_values_best_cls.npy
-|   +-- model_metadata.csv
-|
-+-- binding_site_figures.pml
-+-- md_binding_site_figures.pml
-+-- md_movie_CNP0275186_1.pml
-+-- notebook_00_master_database_construction.ipynb
-+-- notebook_01_chembl_qsar_dataset.ipynb
-+-- notebook_02_qsar_modeling.ipynb
-+-- notebook_03_virtual_screening.ipynb
-+-- notebook_04_molecular_docking.ipynb
-+-- notebook_05a_md_local_preparation.ipynb
-+-- notebook_05b_md_colab_execution.ipynb
-+-- notebook_05c_md_local_analysis.ipynb
-+-- README.md
-
+│
+├── data/
+│   ├── docking/
+│   │   ├── receptor/
+│   │   │   ├── 1J3I_clean.pdb
+│   │   │   ├── 1J3I_original.pdb
+│   │   │   └── 1J3I_receptor.pdbqt
+│   │   │
+│   │   ├── ligands_pdbqt/
+│   │   │   └── 300 prepared ligand PDBQT files
+│   │   │
+│   │   ├── results/
+│   │   │   └── 300 AutoDock Vina output PDBQT files
+│   │   │
+│   │   ├── logs/
+│   │   │
+│   │   ├── docking_checkpoint.csv
+│   │   ├── ligand_prep_report.csv
+│   │   └── vina_config.txt
+│   │
+│   ├── md/
+│   │   └── MD system files and trajectories
+│   │
+│   ├── chembl_dhfr_curated.parquet
+│   ├── chembl_dhfr_raw.csv
+│   ├── coconut_index.parquet
+│   ├── docking_results.csv
+│   ├── md_shortlist.csv
+│   ├── npass_master.parquet
+│   ├── screening_probs_all.npy
+│   ├── vs_african_np_hits.csv
+│   ├── vs_cascade_summary.csv
+│   └── vs_docking_smiles.csv
+│
+├── figures/
+│   ├── binding_site/
+│   │   ├── md_frames/
+│   │   │   └── Representative MD frame PDB files
+│   │   │
+│   │   ├── movie_frames/
+│   │   │   └── Frames used to render simulation video
+│   │   │
+│   │   ├── CNP0275186_1_md_simulation.mp4
+│   │   ├── CNP0275186_1_md_simulation_white.mp4
+│   │   ├── fig21_*.png
+│   │   │   └── Docked pose binding site views (PyMOL)
+│   │   │
+│   │   └── fig22_*.png
+│   │       └── MD-equilibrated binding site views (PyMOL)
+│   │
+│   ├── fig1_roc_curves.png
+│   ├── fig2_*.png
+│   └── fig23_contact_frequency.png
+│
+├── models/
+│   ├── best_classifier.pkl
+│   │   └── Primary QSAR model (Random Forest)
+│   │
+│   ├── ad_h_star.npy
+│   ├── ad_train_matrix.npy
+│   ├── shap_values_best_cls.npy
+│   └── model_metadata.csv
+│
+├── binding_site_figures.pml
+├── md_binding_site_figures.pml
+├── md_movie_CNP0275186_1.pml
+│
+├── notebook_00_master_database_construction.ipynb
+├── notebook_01_chembl_qsar_dataset.ipynb
+├── notebook_02_qsar_modeling.ipynb
+├── notebook_03_virtual_screening.ipynb
+├── notebook_04_molecular_docking.ipynb
+├── notebook_05a_md_local_preparation.ipynb
+├── notebook_05b_md_colab_execution.ipynb
+├── notebook_05c_md_local_analysis.ipynb
+│
+├── README.md
 ---
 
 ## Notebooks
