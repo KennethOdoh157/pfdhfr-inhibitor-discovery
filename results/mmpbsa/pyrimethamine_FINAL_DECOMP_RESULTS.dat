@@ -1,0 +1,109 @@
+| Run on Fri Aug 14 08:50:19 2026
+|
+|gmx_MMPBSA Version=1.6.5 based on MMPBSA.py v.16.0
+|Complex Structure file:                /home/kenjo/mmpbsa_project/tpr_files/pyrimethamine_md.tpr
+|Complex (GROMACS) topology file:       /home/kenjo/mmpbsa_project/gmx_topologies/systems/pyrimethamine/topol_complex_fixed.top
+|Complex (AMBER) topology file:                                       COM.prmtop
+|Receptor (AMBER) topology file:                                      REC.prmtop
+|Ligand (AMBER) topology file:                                        LIG.prmtop
+|Initial trajectories:                                            COM_traj_0.xtc
+|
+|Receptor mask:                  ":1-223"
+|Ligand mask:                    ":224"
+|Ligand residue name is:         "UNL"
+|
+|Calculations performed using 58 complex frames
+|
+|Generalized Born ESURF calculated using 'LCPO' surface areas
+|
+|Using temperature = 300.00 K
+|All units are reported in kcal/mol
+|
+|SD - Sample standard deviation, SEM - Sample standard error of the mean
+|SD(Prop.), SEM(Prop.) - SD and SEM obtained with propagation of uncertainty formula
+|https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulae
+|
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+GENERALIZED BORN:
+
+Complex:
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+BOND                    725.77         21.68      21.68         2.85       2.85
+ANGLE                  1785.07         30.63      30.63         4.02       4.02
+DIHED                  2265.82         18.43      18.43         2.42       2.42
+VDWAALS               -1733.07         24.84      24.84         3.26       3.26
+EEL                  -16110.15        148.77     148.77        19.53      19.53
+1-4 VDW                 876.95         12.12      12.12         1.59       1.59
+1-4 EEL               10657.24         43.13      43.13         5.66       5.66
+EGB                   -3978.52        117.05     117.05        15.37      15.37
+ESURF                    89.60          2.40       2.40         0.32       0.32
+
+GGAS                  -1532.36        162.81     124.28        21.38      16.32
+GSOLV                 -3888.92        117.07     116.60        15.37      15.31
+
+TOTAL                 -5421.28        200.53      38.50        26.33       5.06
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Receptor:
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+BOND                    720.04         21.56      21.56         2.83       2.83
+ANGLE                  1776.72         30.49      30.49         4.00       4.00
+DIHED                  2255.46         18.24      18.24         2.39       2.39
+VDWAALS               -1707.38         24.12      24.12         3.17       3.17
+EEL                  -16123.13        149.75     149.75        19.66      19.66
+1-4 VDW                 868.40         12.00      12.00         1.58       1.58
+1-4 EEL               10811.11         43.54      43.54         5.72       5.72
+EGB                   -3983.39        117.38     117.38        15.41      15.41
+ESURF                    90.54          2.39       2.39         0.31       0.31
+
+GGAS                  -1398.78        163.63     125.62        21.49      16.50
+GSOLV                 -3892.85        117.40     116.87        15.42      15.35
+
+TOTAL                 -5291.64        201.39      38.18        26.44       5.01
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Ligand:
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+BOND                      5.73          2.13       2.13         0.28       0.28
+ANGLE                     8.36          2.12       2.12         0.28       0.28
+DIHED                    10.35          2.13       2.13         0.28       0.28
+VDWAALS                  -1.20          0.95       0.95         0.13       0.13
+EEL                      24.15          0.72       0.72         0.09       0.09
+1-4 VDW                   8.56          1.11       1.11         0.15       0.15
+1-4 EEL                -153.87          1.97       1.97         0.26       0.26
+EGB                     -15.08          0.51       0.51         0.07       0.07
+ESURF                     2.18          0.01       0.01         0.00       0.00
+
+GGAS                    -97.91          4.49       3.39         0.59       0.45
+GSOLV                   -12.90          0.51       0.50         0.07       0.07
+
+TOTAL                  -110.81          4.52       3.32         0.59       0.44
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Delta (Complex - Receptor - Ligand):
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+ΔBOND                    -0.00          2.02       0.00         0.27       0.00
+ΔANGLE                    0.00          1.98       0.00         0.26       0.00
+ΔDIHED                   -0.00          1.94       0.00         0.25       0.00
+ΔVDWAALS                -24.48          0.23       2.97         0.03       0.39
+ΔEEL                    -11.18          0.26       5.99         0.03       0.79
+Δ1-4 VDW                 -0.00          0.99       0.00         0.13       0.00
+Δ1-4 EEL                  0.00          1.56       0.00         0.21       0.00
+ΔEGB                     19.95          0.18       3.40         0.02       0.45
+ΔESURF                   -3.12          0.00       0.27         0.00       0.03
+
+ΔGGAS                   -35.66          0.34       7.42         0.05       0.97
+ΔGSOLV                   16.83          0.18       3.27         0.02       0.43
+
+ΔTOTAL                  -18.83          0.39       5.08         0.05       0.67
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------

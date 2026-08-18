@@ -1,0 +1,16 @@
+Property,CNP0286261,CNP0275186,CNP0539885,Pyrimethamine
+HIA (%),1.00,1.00,0.22,1.00
+Caco2 permeability,-5.30 (32th pctl),-5.06 (45th pctl),-6.74 (4th pctl),-4.41 (86th pctl)
+Oral bioavailability,0.59,0.47,0.66,0.99
+P-gp substrate,0.98,0.77,0.04,0.01
+BBB penetration,0.11,0.44,0.37,0.97
+Plasma protein binding,103.44 (95th pctl),110.72 (99th pctl),75.30 (50th pctl),89.08 (72th pctl)
+Volume of distribution,3.82 (67th pctl),6.89 (84th pctl),3.86 (67th pctl),7.89 (87th pctl)
+CYP1A2 inhibition,0.50,0.39,0.06,0.85
+CYP2C9 inhibition,0.94,0.56,0.07,0.01
+CYP2C19 inhibition,0.91,0.25,0.05,0.25
+CYP2D6 inhibition,0.12,0.39,0.10,0.06
+CYP3A4 inhibition,0.34,0.81,0.03,0.06
+Hepatocyte clearance,80.41 (83th pctl),112.66 (94th pctl),-27.51 (4th pctl),49.85 (62th pctl)
+Microsomal clearance,55.21 (81th pctl),135.99 (99th pctl),-18.06 (10th pctl),57.20 (82th pctl)
+Half-life,29.31 (75th pctl),-62.44 (0th pctl),48.31 (87th pctl),27.61 (74th pctl)

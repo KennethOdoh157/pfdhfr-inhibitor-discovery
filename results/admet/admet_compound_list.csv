@@ -1,0 +1,14 @@
+dock_id,canonical_smiles,vina_score_1,docking_rank,source
+CNP0286261_0,O=C(CCc1ccccc1)c1c(O)c(Cc2ccccc2O)c2c(c1O)Cc1ccccc1O2,-11.86,1,top10_docking
+CNP0275186_1,CC(C)C1=CC2=CC=C3[C@@](C)(COC(=O)c4ccc(O)c(O)c4)CCC[C@]3(C)C2=C(O)C1=O,-11.13,2,top10_docking
+CNP0319845_2,COc1cc2c(cc1OC)[C@@H]1C(=O)c3ccc4c(c3O[C@@H]1CO2)C=CC(C)(C)O4,-10.96,3,top10_docking
+CNP0110434_2,CC(C)C1=CC2=CC=C3C(C)(C)[C@H](OC(=O)c4ccccc4)CC[C@]3(C)C2=C(O)C1=O,-10.93,4,top10_docking
+CNP0346362_1,CC(C)=CCc1cc([C@@H]2CC(=O)c3c(O)cc(O)cc3O2)cc2c1OC(C)(C)CC2,-10.89,5,top10_docking
+CNP0346376_1,CC(C)C1=CC2=CC=C3C(C)(C)[C@@H](OC(=O)c4ccccc4)CC[C@]3(C)[C@@H]2C(=O)C1=O,-10.69,6,top10_docking
+CNP0329927_1,CCN1CC[C@H]2c3ccccc3N[C@@H]2[C@H]1CCCc1nccc2c3cc(O)ccc3n(C)c12,-10.64,7,top10_docking
+CNP0332712_1,CC(C)=CCc1cc([C@@H]2CC(=O)c3ccc(O)cc3O2)cc2c1OC(C)(C)CC2,-10.47,8,top10_docking
+CNP0309710_3,CC(C)C1=CC2=CC=C3C(C)(C)C[C@@H](OC(=O)c4ccc(O)cc4)C[C@]3(C)C2=C(O)C1=O,-10.43,9,top10_docking
+CNP0242596_0,Cn1c2c3c(nc-2c(-c2c4nc5ccccc5c-4n(C)c4ccccc24)c2ccccc21)CC=CC3,-10.42,10,top10_docking
+CNP0178940_1,COc1ccc([C@H](CC(=O)O)NC(=O)COc2cc(O)c3c(c2)OC(C)(C)CC3=O)cc1OC,-10.13,4,md_shortlist
+CNP0539885_2,N=c1nc(O)c2c(CCc3ccc(C(=O)N[C@@H](CCC(=O)O)C(=O)O)cc3)c[nH]c2[nH]1,-10.03,5,md_shortlist
+pyrimethamine,Cc1cnc(N)nc1-c1ccc(Cl)cc1,-6.9,,reference_drug

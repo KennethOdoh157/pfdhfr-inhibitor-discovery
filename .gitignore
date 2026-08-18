@@ -50,3 +50,15 @@ data/docking/
 # OS / notebook temp
 .DS_Store
 Thumbs.db
+
+# gmx_MMPBSA additions (not covered by existing rules)
+*.ndx
+*.mdin
+
+# Trajectory index cache files (cpptraj/MDAnalysis)
+*.npz
+
+# Cached model weights, in case ADMET-AI or Chemprop downloads
+# checkpoints into the project folder rather than the conda env
+*.pt
+*.ckpt
