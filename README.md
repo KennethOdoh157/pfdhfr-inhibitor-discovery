@@ -576,8 +576,8 @@ Several implementation decisions required careful debugging and are documented h
 
 | Paper | Content | Target Journal | Status |
 |-------|---------|---------------|--------|
-| Paper 1 | Integrated QSAR modeling, virtual screening, molecular docking, and 100 ns molecular dynamics study identifying three African natural product hits against pyrimethamine-resistant PfDHFR | PLOS Computational Biology | In preparation |
-| Paper 2 | MM-PBSA/MM-GBSA binding free energy calculation, per-residue energy decomposition, and ADMET profiling of the three lead compounds identified in Paper 1 | PLOS Computational Biology | In preparation |
+| Paper 1 | Integrated QSAR modeling, virtual screening, molecular docking, and 100 ns molecular dynamics study identifying three African natural product hits against pyrimethamine-resistant PfDHFR | PLOS ONE | In preparation |
+| Paper 2 | MM-PBSA/MM-GBSA binding free energy calculation, per-residue energy decomposition, and ADMET profiling of the three lead compounds identified in Paper 1 | PLOS ONE | In preparation |
 
 This project was originally scoped as three separate manuscripts (QSAR, docking, and molecular dynamics as independent papers). During manuscript preparation these were consolidated into a single integrated study, reflected in Paper 1 above, with binding free energy and ADMET profiling developed as a focused companion manuscript rather than a third standalone paper.
 
