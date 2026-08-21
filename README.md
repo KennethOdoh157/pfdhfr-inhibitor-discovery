@@ -34,7 +34,7 @@ Two peer-reviewed manuscripts are in preparation from this integrated body of wo
 > - **100 ns GPU MD simulations** on Google Colab Pro (NVIDIA T4): CNP0539885 maintains ASP54 hydrogen bond at 94.2% occupancy
 > - **MM-PBSA/MM-GBSA binding free energy**: two of three hits exceed pyrimethamine in binding enthalpy, with CNP0539885 reaching -33.89 kcal/mol (MM-GBSA)
 > - **ADMET-AI profiling** across 98 endpoints shows the strongest binder is not the safest candidate, binding strength alone did not predict developability
-> - Two manuscripts targeting PLOS Computational Biology
+> - Two manuscripts targeting PLOS ONE
 
 ---
 
